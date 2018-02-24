@@ -1,0 +1,35 @@
+{% extends "/index.twig" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/secret/css/assets/css/reset.css">
+    <link rel="stylesheet" href="/secret/css/assets/css/supersized.css">
+    <link rel="stylesheet" href="/secret/css/assets/css/style.css">
+{% endblock %}
+
+{% block content %}
+    <div class="page-container">
+        <h1>Login</h1>
+        <form operation="submit">
+            <input type="text" name="user" class="username" placeholder="Username" required />
+            <input type="password" name="password" class="password" placeholder="Password" required />
+            <button type="submit" operation="submit">Sign me in</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="/secret/css/assets/js/jquery-1.8.2.min.js"></script>
+    <script src="/secret/css/assets/js/supersized.3.2.7.min.js"></script>
+    <script src="/secret/css/assets/js/supersized-init.js"></script>
+    <script src="/secret/css/assets/js/scripts.js"></script>
+    <script type="text/javascript">
+        const submitForm = $('form[operation="submit"]');
+
+        submitForm.submit(function (event) {
+            event.preventDefault();
+            $.post('/login?aa=22', $(this).serializeArray()).done(function (response) {
+                console.log(response);
+            })
+        });
+    </script>
+{% endblock %}
